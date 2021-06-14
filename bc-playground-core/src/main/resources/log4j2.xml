@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Appenders>
+		<Console name="stdout" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+		<RollingFile name="rollingFile"
+			fileName="./bc-playground-rolling.log"
+			filePattern="/var/log/bc-playground/rolling-%d{MM-dd-yy}.log.gz">
+			<PatternLayout
+				pattern="%d [%t] %-5level: %msg%n%throwable" />
+			<Policies>
+				<CronTriggeringPolicy schedule="0 0 0 * * ?" />
+				<SizeBasedTriggeringPolicy size="500M" />
+			</Policies>
+		</RollingFile>
+		<File name="fileSystem" fileName="./bc-playground-file.log">
+			<PatternLayout
+				pattern="%d [%t] %-5level: %msg%n%throwable" />
+		</File>
+	</Appenders>
+	<Loggers>
+		<Logger name="com" level="INFO" additivity="true">
+			<AppenderRef ref="rollingFile" />
+			<AppenderRef ref="fileSystem" />
+		</Logger>
+		<Logger name="net" level="INFO" additivity="true">
+			<AppenderRef ref="rollingFile" />
+			<AppenderRef ref="fileSystem" />
+		</Logger>
+		<Logger name="org" level="INFO" additivity="true">
+			<AppenderRef ref="rollingFile" />
+			<AppenderRef ref="fileSystem" />
+		</Logger>
+		<Root level="INFO" additivity="true">
+			<AppenderRef ref="stdout" />
+		</Root>
+	</Loggers>
+</Configuration>

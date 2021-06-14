@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>de.mortensenit</groupId>
+		<artifactId>bc-playground</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>..</relativePath> <!-- lookup parent from repository -->
+	</parent>
+	<artifactId>bc-playground-core</artifactId>
+	<name>bc-playground-core</name>
+	<dependencies>
+
+		<dependency>
+			<groupId>de.mortensenit</groupId>
+			<artifactId>bc-playground-model</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<!-- added email dependency -->
+		<dependency>
+			<groupId>org.springframework.integration</groupId>
+			<artifactId>spring-integration-mail</artifactId>
+		</dependency>
+
+		<!-- check if needed. Spring documentations says: -->
+		<!-- "The javax.mail:javax.mail-api must be included via vendor-specific 
+			implementation." -->
+		<!-- Oracle Javax Mail API is royality free and the reference implementation -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>javax.mail-api</artifactId>
+		</dependency>
+
+		<!-- added database connectivity -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>
